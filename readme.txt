@@ -39,9 +39,10 @@ http://jaspreetchahal.org/wordpress-coupon-plugin-jc-coupon-revealer-pro/
 View the screenshots tab here on wordpress
 
 == Screenshots ==
-1. Manage Coupons - screenshots/jcorgmanagecoupons.PNG
-2. Add Coupons - screenshots/jcouponadd.PNG
-3. Coupon Usage - screenshots/couponusage.png
+
+1. Manage Coupons - screenshot-1.png
+2. Add Coupons - screenshot-2.png
+3. Coupon Usage - screenshot-3.png
 
 == Changelog ==
 = 1.0 =
