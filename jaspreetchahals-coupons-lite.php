@@ -619,6 +619,8 @@ function jcorgcrFullyLoadedTpl($inclids = true,$coupon=null) {                  
                     </div>
                 </div>
             </div>
+            </div>
+            </div>
        ';
        if(get_option("disply_jcorgcr_url") == "Yes") {
            $fullyloadedhtml.="<a href='http://jaspreetchahal.org' style='font-size:6px;color:transparent;float:left'>Powered by http://jaspreetchahal.org</a>";
