@@ -184,10 +184,10 @@
         */
 
         wp_enqueue_script('jcorgcr_jqueryui',"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js");
-        wp_enqueue_script('jcorgcr_admin_script',plugins_url("/jcorgcouponslite/js/jcorgcr_admin.min.js"));
-        wp_enqueue_script('jcorgcr_admin_hc',plugins_url("/jcorgcouponslite/js/jquery.hc.min.js"));
-        wp_enqueue_style('jcorgcr_admin_css',plugins_url("/jcorgcouponslite/css/jcorgcr.min.css"));
-        wp_enqueue_style('jcorgcr_jqueryui',plugins_url("/jcorgcouponslite/css/ui-lightness/jquery-ui-1.8.20.custom.css"));
+        wp_enqueue_script('jcorgcr_admin_script',plugins_url("/jaspreetchahals-coupons-lite/js/jcorgcr_admin.min.js"));
+        wp_enqueue_script('jcorgcr_admin_hc',plugins_url("/jaspreetchahals-coupons-lite/js/jquery.hc.min.js",dirname(__FILE__)));
+        wp_enqueue_style('jcorgcr_admin_css',plugins_url("/jaspreetchahals-coupons-lite/css/jcorgcr.min.css",dirname(__FILE__)));
+        wp_enqueue_style('jcorgcr_jqueryui',plugins_url("/jaspreetchahals-coupons-lite/css/ui-lightness/jquery-ui-1.8.20.custom.css",dirname(__FILE__)));
         wp_enqueue_script('thickbox');
         wp_enqueue_script('media-upload');
         wp_enqueue_style('thickbox');
@@ -195,7 +195,7 @@
         
         
         if(ieversion() < 9 && ieversion()>0){
-             wp_enqueue_style('jcorgcr_ie_comp',plugins_url("/jcorgcouponslite/css/jcorg_iecomp.min.css"));        
+             wp_enqueue_style('jcorgcr_ie_comp',plugins_url("/jaspreetchahals-coupons-litecss/jcorg_iecomp.min.css",dirname(__FILE__)));        
         }
                 
     }
@@ -231,12 +231,11 @@
      
     function jcorgcr_eu_scripts() {
         wp_enqueue_script( 'jquery');
-        wp_enqueue_script('jcorgcr_eu_script',plugins_url("/jcorgcouponslite/js/jcorgcr_wp.min.js"));
-        wp_enqueue_script('jcorgcrzs',plugins_url("/jcorgcouponslite/js/jquery.zclip.js"));
-        wp_enqueue_style('jcorgcr_css',plugins_url("/jcorgcouponslite/css/jcorgcr.min.css"));
+        wp_enqueue_script('jcorgcr_eu_script',plugins_url("/jaspreetchahals-coupons-litejs/jcorgcr_wp.min.js"));
+        wp_enqueue_script('jcorgcrzs',plugins_url("/jaspreetchahals-coupons-litejs/jquery.zclip.js"));
+        wp_enqueue_style('jcorgcr_css',plugins_url("/jaspreetchahals-coupons-litecss/jcorgcr.min.css"));
         if(ieversion() < 9 && ieversion()>0){
-             wp_enqueue_style('jcorgcr_ie_comp',plugins_url("/jcorgcouponslite/css/jcorg_iecomp.min.css"));
-        
+             wp_enqueue_style('jcorgcr_ie_comp',plugins_url("/jaspreetchahals-coupons-litecss/jcorg_iecomp.min.css"));        
         }
     }
     

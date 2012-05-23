@@ -88,7 +88,7 @@
                             <td><span id='jcorgcr-coupon-yn-$coupon->id'>Yes's: ".stripcslashes($coupon->yeses)."<br>No's: ".stripcslashes($coupon->nos)."</span></td>
                             <td>
                             <a href='javascript:void(0)' class='button ' style='margin:2px !important;float:left' onclick=\"Jcorgcr.actCP('$ppath','reset','$coupon->id','$nonce')\">Reset Yes/No</a> 
-                            <a href='?page=jcorgcouponslite/jcorgcouponslite.php_add&mod=$coupon->id&_wponce=$nonce' class='button ' style='margin:2px !important;float:left'>Modify</a> 
+                            <a href='?page=jaspreetchahals-coupons-lite/jaspreetchahals-coupons-lite.php_add&mod=$coupon->id&_wponce=$nonce' class='button ' style='margin:2px !important;float:left'>Modify</a> 
                             <a href='javascript:void(0)' class='button ' style='margin:2px !important;float:left' onclick=\"Jcorgcr.actCP('$ppath','clone','$coupon->id','$nonce')\">Duplicate</a> 
                             <a href='javascript:void(0)' class='button ' style='margin:2px !important;float:left' onclick=\"Jcorgcr.actCP('$ppath','kill','$coupon->id','$nonce')\">Delete</a> 
                             </td>                      
@@ -178,7 +178,7 @@
                        if($insert_id > 0) {
                            $wpdb->update($wpdb->prefix . "jcorgcr_coupons",array("shortcode"=>"[jcorgcrcoupon slug='".preg_replace("/\W/","",$jcorgcrpost->name)."' id='$insert_id']"),array("id"=>$insert_id));
                        }
-                       echo "<div class='jcorgcrsuccess'>Action Successful. <br><br><strong>Shortcode:</strong> [jcorgcrcoupon slug='".preg_replace("/\W/","",$jcorgcrpost->name)."' id='$insert_id']<br><br><a href='?page=jcorgcouponslite/jcorgcouponslite.php_manage'>Manage Coupons</a> |  <a href='?page=jcorgcouponslite/jcorgcouponslite.php_add'>Add Another Coupon</a></div>";
+                       echo "<div class='jcorgcrsuccess'>Action Successful. <br><br><strong>Shortcode:</strong> [jcorgcrcoupon slug='".preg_replace("/\W/","",$jcorgcrpost->name)."' id='$insert_id']<br><br><a href='?page=jaspreetchahals-coupons-lite/jaspreetchahals-coupons-lite.php_manage'>Manage Coupons</a> |  <a href='?page=jaspreetchahals-coupons-lite/jaspreetchahals-coupons-lite.php_add'>Add Another Coupon</a></div>";
                    }
                }
             }  
