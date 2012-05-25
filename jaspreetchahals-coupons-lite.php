@@ -231,11 +231,11 @@
      
     function jcorgcr_eu_scripts() {
         wp_enqueue_script( 'jquery');
-        wp_enqueue_script('jcorgcr_eu_script',plugins_url("/jaspreetchahals-coupons-litejs/jcorgcr_wp.min.js"));
-        wp_enqueue_script('jcorgcrzs',plugins_url("/jaspreetchahals-coupons-litejs/jquery.zclip.js"));
-        wp_enqueue_style('jcorgcr_css',plugins_url("/jaspreetchahals-coupons-litecss/jcorgcr.min.css"));
+        wp_enqueue_script('jcorgcr_eu_script',plugins_url("/jaspreetchahals-coupons-lite/js/jcorgcr_wp.min.js"));
+        wp_enqueue_script('jcorgcrzs',plugins_url("/jaspreetchahals-coupons-lite/js/jquery.zclip.js"));
+        wp_enqueue_style('jcorgcr_css',plugins_url("/jaspreetchahals-coupons-lite/css/jcorgcr.min.css"));
         if(ieversion() < 9 && ieversion()>0){
-             wp_enqueue_style('jcorgcr_ie_comp',plugins_url("/jaspreetchahals-coupons-litecss/jcorg_iecomp.min.css"));        
+             wp_enqueue_style('jcorgcr_ie_comp',plugins_url("/jaspreetchahals-coupons-lite/css/jcorg_iecomp.min.css"));        
         }
     }
     
