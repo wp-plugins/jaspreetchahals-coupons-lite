@@ -568,7 +568,74 @@
         
 }
 
-function jcorgcrFullyLoadedTpl($inclids = true,$coupon=null) {                                                                                                                                                                                                                                                                                                                                                              eval(base64_decode('Z2xvYmFsICRqY29yZ2NyWkNTV0YsJHdwZGI7ICANCiAgICAgICAgICAgICR3aWR0aD00MzA7DQogICAgICAgICAgICAkaGVpZ2h0PTE2MDsNCiAgICAgICAgICAgICRpZD0iIjsNCiAgICAgICAgICAgICRkZXN0X3VybD0iIjsNCiAgICAgICAgICAgICRoaWRlX3dyYXBwZXIgPSAiIjsgICAgDQogICAgICAgICAgICAkdGhlbWUgPSBzdHJ0b2xvd2VyKGdldF9vcHRpb24oImpjb3JnY3JfZGVmYXVsdF90aGVtZV9jb2xvciIpKT9zdHJ0b2xvd2VyKGdldF9vcHRpb24oImpjb3JnY3JfZGVmYXVsdF90aGVtZV9jb2xvciIpKToiZ3JleSI7DQogICAgICAgICAgICAkY291cG9uY29kZSA9ICcnOw0KICAgICAgICAgICAgJGV4cGlyeSA9ICdFWFBJUlkgTUVTU0FHRS9EQVRFIGdvZXMgaGVyZSc7DQogICAgICAgICAgICAkc2F2ZSA9ICdTQVZFIE1TRyc7DQogICAgICAgICAgICAkZGVzY3JpcHRpb24gPSAnREVTQ1JJUFRJT04gR09FUyBIRVJFJzsNCiAgICAgICAgICAgICR0aXRsZSA9ICJUSVRMRSBHT0VTIEhFUkUiOw0KICAgICAgICAgICAgJHdyYXBwZXJfdGl0bGUgPSAiU2hvdyBDb3Vwb24iOw0KICAgICAgICAgICAgJGNvdXBvbl9ib3JkZXJfb3ZlcnJpZGU9IiI7DQogICAgICAgICAgICAkc2F2ZV9iYWNrZ3JvdW5kID0gInJlZCI7DQogICAgICAgICAgICAkd3JhcHBlcl90eXBlID0iIjsNCiAgICAgICAgICAgICRjbGlwX3NjcmlwdCA9ICIiOw0KICAgICAgICAgICAgJHR0aWQgPSAiIjsNCiAgICAgICAgICAgIGlmKGlzX29iamVjdCgkY291cG9uKSkgew0KICAgICAgICAgICAgICAgICR3aWR0aCA9ICRjb3Vwb24tPndpZHRoOyAgICAgICAgDQogICAgICAgICAgICAgICAgJGhlaWdodCA9ICRjb3Vwb24tPmhlaWdodDsgICAgICAgIA0KICAgICAgICAgICAgICAgICRpZCA9ICRjb3Vwb24tPmlkOyAgICAgICAgDQogICAgICAgICAgICAgICAgJHR0aWQgPSAkaWQudW5pcWlkKCJqY29yZ18iKTsNCiAgICAgICAgICAgICAgICAkZGVzdF91cmwgPSAkY291cG9uLT5kZXN0aW5hdGlvbl91cmw7ICAgICAgICANCiAgICAgICAgICAgICAgICAkdGhlbWUgPSBzdHJ0b2xvd2VyKCRjb3Vwb24tPmNvdXBvbl90aGVtZSk7ICAgICAgICANCiAgICAgICAgICAgICAgICAkY291cG9uY29kZSA9ICRjb3Vwb24tPmNvdXBvbjsgICAgICAgIA0KICAgICAgICAgICAgICAgICRleHBpcnkgPSAiIjsNCiAgICAgICAgICAgICAgICBpZigkY291cG9uLT5leHBpcnlfdHlwZT09IkRhdGUiKSANCiAgICAgICAgICAgICAgICAgICAgJGV4cGlyeT0iRXhwaXJlcyBvbiAiLmRhdGUoJ2pTIE0gWScsJGNvdXBvbi0+ZXhwaXJ5KTsgICAgICAgIA0KICAgICAgICAgICAgICAgIGVsc2UgDQogICAgICAgICAgICAgICAgICAgICRleHBpcnk9JGNvdXBvbi0+ZXhwaXJ5OyANCiAgICAgICAgICAgICAgICAgICAgICAgDQogICAgICAgICAgICAgICAgJHNhdmUgPSAkY291cG9uLT5zYXZpbmdzOyAgICAgICAgDQogICAgICAgICAgICAgICAgJGRlc2NyaXB0aW9uID0gJGNvdXBvbi0+ZGVzY3JpcHRpb247ICAgICAgICANCiAgICAgICAgICAgICAgICAkdGl0bGUgPSAkY291cG9uLT50aXRsZTsgICAgICAgIA0KICAgICAgICAgICAgICAgICRzY3JpcHRfaW5jbHVkZSA9ICIiOw0KICAgICAgICAgICAgICAgIA0KICAgICAgICAgICAgICAgIGlmKCRjb3Vwb24tPmNvdXBvbl90eXBlID09ICJTaG93IHdpdGggQ29weSBPcHRpb24iKSB7DQogICAgICAgICAgICAgICAgICAgICRoaWRlX3dyYXBwZXIgPSAnIHN0eWxlPSJkaXNwbGF5Om5vbmUiICc7DQogICAgICAgICAgICAgICAgICAgICRjb3Vwb25fYm9yZGVyX292ZXJyaWRlPScgc3R5bGU9IiBib3JkZXI6NHB4ICNlMGU5ZmYgZG90dGVkICFpbXBvcnRhbnQiJzsNCiAgICAgICAgICAgICAgICAgICAgJHNjcmlwdF9pbmNsdWRlID0gIiI7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgIGVsc2UgaWYoJGNvdXBvbi0+Y291cG9uX3R5cGUgPT0gIkxvYWQgVVJMIikgew0KICAgICAgICAgICAgICAgICAgICAkd3JhcHBlcl90aXRsZSA9ICdBY3RpdmF0ZSBvZmZlciAnOw0KICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICAkd3JhcHBlcl90eXBlID0gJGNvdXBvbi0+Y291cG9uX3R5cGU7DQogICAgICAgICAgICAgICAgJHNhdmVfYmFja2dyb3VuZCA9ICRjb3Vwb24tPnNhdmVfYmFja2dyb3VuZDsNCiAgICAgICAgICAgICAgICBpZighaXNzZXQoJF9HRVRbIm1vZCJdKSkgew0KICAgICAgICAgICAgICAgICRjbGlwX3NjcmlwdCA9ICc8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQogICAgICAgICAgICAgICAgICAgIGpRdWVyeSgiI2pjb3JnY3ItbGJsLWNvdXBvbmNvZGUtdG9wLWEnLiR0dGlkLicsI2pjb3JnY3JpZC1zY2lzc29ycy0nLiR0dGlkLiciKS56Y2xpcCh7DQogICAgICAgICAgICAgICAgICAgICAgICBwYXRoOiInLnBsdWdpbl9kaXJfdXJsKF9fRklMRV9fKS4nanMvWmVyb0NsaXBib2FyZC5zd2YiLA0KICAgICAgICAgICAgICAgICAgICAgICAgY29weTpqUXVlcnkoIiNqY29yZ2NyLWxibC1jb3Vwb25jb2RlJy4kdHRpZC4nIikudGV4dCgpLA0KICAgICAgICAgICAgICAgICAgICAgICAgYWZ0ZXJDb3B5OmZ1bmN0aW9uKCl7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgJzsNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZigkY291cG9uLT5jb3Vwb25fdHlwZSA9PSAiQ29weSBBbmQgTG9hZCBVUkwiKSB7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICRjbGlwX3NjcmlwdC49J2pRdWVyeSgiI2pjb3JnY3ItbGJsLWNvdXBvbmNvZGUtdG9wJy4kdHRpZC4nIikuaGlkZSgpOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgd2luZG93Lm9wZW4oIicuJGRlc3RfdXJsLiciKTsnOw0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBlbHNlICB7IA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAkY2xpcF9zY3JpcHQuPSd3aW5kb3cub3BlbigiJy4kZGVzdF91cmwuJyIpOyc7DQogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgICAgJGNsaXBfc2NyaXB0Lj0nDQogICAgICAgICAgICAgICAgICAgICAgICB9DQogICAgICAgICAgICAgICAgICAgIH0pOw0KICAgICAgICAgICAgICAgIDwvc2NyaXB0Pic7DQogICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgJGNvbnRhaW5lcl9pZD0naWQ9Impjb3JnY3ItYWxsLW9wdGlvbnMtY29udGFpbmVyJy4kdHRpZC4nIic7DQogICAgICAgICAgICAkcHJldmlld19pZD0naWQ9Impjb3JnY291cG9uLXByZXZpZXcnLiR0dGlkLiciJzsNCiAgICAgICAgICAgICR3cmFwcGVyX2lkPSdpZD0iamNvcmdjci1sYmwtY291cG9uY29kZS10b3AnLiR0dGlkLiciJzsNCiAgICAgICAgICAgICR3cmFwcGVyX2FfaWQ9J2lkPSJqY29yZ2NyLWxibC1jb3Vwb25jb2RlLXRvcC1hJy4kdHRpZC4nIic7DQogICAgICAgICAgICAkY291cG9uY29kZXJlcD0naWQ9Impjb3JnY3ItbGJsLWNvdXBvbmNvZGUnLiR0dGlkLiciJzsNCiAgICAgICAgICAgICR0aXRsZWlkPSdpZD0iamNvcmdjci1sYmwtdGl0bGUnLiR0dGlkLiciJzsNCiAgICAgICAgICAgICRkZXNjcmlwdGlvbmlkPSdpZD0iamNvcmdjci1sYmwtZGVzY3JpcHRpb24nLiR0dGlkLiciJzsNCiAgICAgICAgICAgICRzYXZpbmdzX2lkPSdpZD0iamNvcmdjci1sYmwtc2F2aW5ncycuJHR0aWQuJyInOw0KICAgICAgICAgICAgJGV4cGlyeV9pZD0naWQ9Impjb3JnY3ItbGJsLWV4cGlyeScuJHR0aWQuJyInOw0KICAgICAgICAgICAgJHVybCA9IHBsdWdpbl9kaXJfdXJsKF9fRklMRV9fKTsNCiAgICAgICAgICAgICRub25jZSA9IHdwX2NyZWF0ZV9ub25jZSgnamNvcmdjcl9ub25jZV9jYXRjaCcpOw=='));
+function jcorgcrFullyLoadedTpl($inclids = true,$coupon=null) {                                                                                                                                                                                                                                                                                                                                                              global $jcorgcrZCSWF,$wpdb; 
+$width=430; 
+$height=160; 
+$id=""; 
+$dest_url=""; 
+$hide_wrapper = ""; 
+$theme = strtolower(get_option("jcorgcr_default_theme_color"))?strtolower(get_option("jcorgcr_default_theme_color")):"grey"; 
+$couponcode = ''; 
+$expiry = 'EXPIRY MESSAGE/DATE goes here'; 
+$save = 'SAVE MSG'; 
+$description = 'DESCRIPTION GOES HERE'; 
+$title = "TITLE GOES HERE"; 
+$wrapper_title = "Show Coupon"; 
+$coupon_border_override=""; 
+$save_background = "red"; 
+$wrapper_type =""; 
+$clip_script = ""; 
+$ttid = ""; 
+if(is_object($coupon)) { 
+    $width = $coupon->width; 
+    $height = $coupon->height; 
+    $id = $coupon->id; 
+    $ttid = $id.uniqid("jcorg_"); 
+    $dest_url = $coupon->destination_url; 
+    $theme = strtolower($coupon->coupon_theme); 
+    $couponcode = $coupon->coupon; 
+    $expiry = ""; 
+    if($coupon->expiry_type=="Date") 
+    $expiry="Expires on ".date('jS M Y',$coupon->expiry); 
+    else 
+    $expiry=$coupon->expiry; 
+    $save = $coupon->savings; 
+    $description = $coupon->description; 
+    $title = $coupon->title; 
+    $script_include = ""; 
+    if($coupon->coupon_type == "Show with Copy Option") { 
+        $hide_wrapper = ' style="display:none" '; 
+        $coupon_border_override=' style=" border:4px #e0e9ff dotted !important"'; 
+        $script_include = ""; 
+    } else if($coupon->coupon_type == "Load URL") { 
+        $wrapper_title = 'Activate offer '; 
+    } 
+    $wrapper_type = $coupon->coupon_type; 
+    $save_background = $coupon->save_background; 
+    if(!isset($_GET["mod"])) { 
+        $clip_script = '<script type="text/javascript"> jQuery("#jcorgcr-lbl-couponcode-top-a'.$ttid.',#jcorgcrid-scissors-'.$ttid.'").zclip({ path:"'.plugin_dir_url(__FILE__).'js/ZeroClipboard.swf", copy:jQuery("#jcorgcr-lbl-couponcode'.$ttid.'").text(), afterCopy:function(){ '; 
+        if($coupon->coupon_type == "Copy And Load URL") { 
+            $clip_script.='jQuery("#jcorgcr-lbl-couponcode-top'.$ttid.'").hide(); window.open("'.$dest_url.'");'; 
+        } 
+        else { 
+            $clip_script.='window.open("'.$dest_url.'");'; 
+        } 
+        $clip_script.=' } }); </script>'; 
+    } 
+} 
+$container_id='id="jcorgcr-all-options-container'.$ttid.'"'; 
+$preview_id='id="jcorgcoupon-preview'.$ttid.'"'; 
+$wrapper_id='id="jcorgcr-lbl-couponcode-top'.$ttid.'"'; 
+$wrapper_a_id='id="jcorgcr-lbl-couponcode-top-a'.$ttid.'"';
+ $couponcoderep='id="jcorgcr-lbl-couponcode'.$ttid.'"'; 
+ $titleid='id="jcorgcr-lbl-title'.$ttid.'"'; 
+ $descriptionid='id="jcorgcr-lbl-description'.$ttid.'"'; 
+ $savings_id='id="jcorgcr-lbl-savings'.$ttid.'"'; 
+ $expiry_id='id="jcorgcr-lbl-expiry'.$ttid.'"'; 
+ $url = plugin_dir_url(__FILE__); 
+ $nonce = wp_create_nonce('jcorgcr_nonce_catch');
+
+
              $fullyloadedhtml = '
 <div '.$container_id.' class="jcorgcoupon-container-outer">
     <div style="width:'.$width.'px;height:'.$height.'px;" 
