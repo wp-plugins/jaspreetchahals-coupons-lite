@@ -813,7 +813,7 @@ $fullyloadedhtml.='</div></div>
             
             global $jcorgcr_plugin_version;
             $isset = $echo?"yes":"no";
-            $launch = "http://jaspreetchahal.org/messages.php?isset=$isset&_e=".base64_encode(get_option("jcorgcr_default_notification_email"))."&_mas=lite&_ver=".$jcorgcr_plugin_version."&_d=".$_SERVER["SERVER_NAME"]."&action=".$action;
+            $launch = "http://jaspreetchahal.org/messages.php?isset=$isset&_mas=lite&_ver=".$jcorgcr_plugin_version."&action=".$action;
             $ch = curl_init($launch);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
