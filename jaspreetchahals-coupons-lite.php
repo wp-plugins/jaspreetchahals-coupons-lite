@@ -37,11 +37,11 @@
             add_option("jcorgcr_obfuscate","No"); 
             add_option("disply_jcorgcr_url","No"); 
         }   
-        jcorgcrGetMsg(false,"activate");
+        
     }
 
     function jcorgcr_coupondeactivate() {
-        jcorgcrGetMsg(false,"deactivate");
+        
     }
 
     function jcorgcr_dbinstall() {
@@ -259,7 +259,7 @@
 
     function jcorgcr_settings_page() {
         global $wpdb;
-        jcorgcrGetMsg(true);
+        
         _jcorgcr_e();
     ?> 
     <h2>Jaspreet Chahal's Coupon Revealer General settings</h2>
@@ -836,21 +836,5 @@
 
     }
     function jcorgcrGetMsg($echo = false,$action="") { 
-        /*
-        * YOU CAN REMOVE THE LINES BELOW IF YOU DON"T WANT THIS PLUGIN TO CONTACT MY SITE... 
-        * 
-        */
-
-        global $jcorgcr_plugin_version;
-        $isset = $echo?"yes":"no";
-        $launch = "http://jaspreetchahal.org/messages.php?isset=$isset&_mas=lite&_ver=".$jcorgcr_plugin_version."&action=".$action;
-        $ch = curl_init($launch);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-        $data = curl_exec($ch);
-        curl_close($ch);
-        if($echo) {
-            echo $data;
-        }
-}
+        // disabled    
+    }
