@@ -3,12 +3,12 @@
     Plugin Name: JaspreetChahal's Coupons Lite
     Plugin URI: http://jaspreetchahal.org/wordpress-jc-coupon-plugin-lite
     Description: JC Coupon Lite plugin provides easy to use coupon management to be included in your posts and pages or even in side bars. There are heaps of options to create a coupon with multiple coupon themes. 
-    Version: 1.6.2
+    Version: 2.0
     Author: Jaspreet Chahal
     Author URI: http://jaspreetchahal.org
     */
     global $jcorgcr_plugin_version;
-    $jcorgcr_plugin_version = "1.6.2";
+    $jcorgcr_plugin_version = "2.0";
     global $jcorgcr_db_version;
     $jcorgcr_db_version = "1.7";
     global $jcorgcrZCSWF;
@@ -183,9 +183,9 @@
         add_settings_field('jcorgcr_default_height', 'Default Height', 'jcorgcr_default_height', __FILE__, 'main_settings_section');
         */
 
-       // wp_enqueue_script('jcorgcr_jqueryui',"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js");
-        wp_enqueue_script('jcorgcr_admin_script',plugins_url("/jaspreetchahals-coupons-lite/js/jcorgcr_admin.min.js"), array('jquery', 'jquery-ui-core', 'jquery-effects-core', 'jquery-ui-dialog','jquery-ui-datepicker','jquery-ui-slider'),'3.0');
-        wp_enqueue_script('jcorgcr_admin_hc',plugins_url("/jaspreetchahals-coupons-lite/js/jquery.hc.min.js",dirname(__FILE__)), array('jquery', 'jquery-ui-core', 'jquery-effects-core', 'jquery-ui-dialog','jquery-ui-datepicker','jquery-ui-slider'),'3.0');
+        wp_enqueue_script('jcorgcr_jqueryui',"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js");
+        wp_enqueue_script('jcorgcr_admin_script',plugins_url("/jaspreetchahals-coupons-lite/js/jcorgcr_admin.min.js"));
+        wp_enqueue_script('jcorgcr_admin_hc',plugins_url("/jaspreetchahals-coupons-lite/js/jquery.hc.min.js",dirname(__FILE__)));
         wp_enqueue_style('jcorgcr_admin_css',plugins_url("/jaspreetchahals-coupons-lite/css/jcorgcr.min.css",dirname(__FILE__)));
         wp_enqueue_style('jcorgcr_jqueryui',plugins_url("/jaspreetchahals-coupons-lite/css/ui-lightness/jquery-ui-1.8.20.custom.css",dirname(__FILE__)));
         wp_enqueue_script('thickbox');
@@ -592,30 +592,29 @@
         $save = 'SAVE MSG';
         $description = 'DESCRIPTION GOES HERE';
         $title = "TITLE GOES HERE";
-        $wrapper_title = "Show Coupon";
+        $wrapper_title = "SHOW COUPON";
         $coupon_border_override="";
         $save_background = "red";
         $wrapper_type ="";
         $clip_script = "";
         $ttid = "";
         if(is_object($coupon)) {
-            $width = $coupon->width?$coupon->width:$width;        
-            $height = $coupon->height?$coupon->height:$height;
+            $width = $coupon->width;        
+            $height = $coupon->height;        
             $id = $coupon->id;        
             $ttid = $id.uniqid("jcorg_");
             $dest_url = $coupon->destination_url;        
             $theme = strtolower($coupon->coupon_theme);        
-            $theme = $theme?$theme:(strtolower(get_option("jcorgcr_default_theme_color"))?strtolower(get_option("jcorgcr_default_theme_color")):"grey");
             $couponcode = $coupon->coupon;        
             $expiry = "";
             if($coupon->expiry_type=="Date") 
-                $expiry="Expires on ".date('d/m/Y',$coupon->expiry);        
+                $expiry="Expires on ".date('d/m/Y',$coupon->expiry);
             else 
-                $expiry=$coupon->expiry; 
+                $expiry=stripslashes(strip_tags($coupon->expiry));
 
-            $save = $coupon->savings;        
-            $description = $coupon->description;        
-            $title = $coupon->title;        
+            $save = stripslashes(strip_tags($coupon->savings));
+            $description = stripslashes(strip_tags($coupon->description));
+            $title = stripslashes(strip_tags($coupon->title));
             $script_include = "";
 
             if($coupon->coupon_type == "Show with Copy Option") {
@@ -624,7 +623,7 @@
                 $script_include = "";
             }
             else if($coupon->coupon_type == "Load URL") {
-                $wrapper_title = 'Activate offer ';
+                $wrapper_title = "ACTIVATE OFFER";
             }
             $wrapper_type = $coupon->coupon_type;
             $save_background = $coupon->save_background;
@@ -635,28 +634,19 @@
                     $ele_id = "jcorgcr-scissors-$ttid";
                 }
 
-                $clip_script .= "
-                jQuery(document).ready(function(){
+                $clip_script .= "jQuery(window).load(function(){
                 jQuery('div#$ele_id').click(function(){
-                ".jcorgGetLink($coupon);                    
-                if($coupon->coupon_type == "Copy And Load URL") {
+                    ".jcorgGetLink($coupon);                    
+                    if($coupon->coupon_type == "Copy And Load URL") {
                     $clip_script.='jQuery("#jcorgcr-lbl-couponcode-top'.$ttid.'").hide();';
                 }
-                $clip_script.="  
-                });
-
+                  $clip_script.="});
                 jQuery('#jcorgcr-scissors-$ttid').zclip({
                 path:'".plugin_dir_url(__FILE__)."/js/ZeroClipboard.swf',
                 copy:document.getElementById('jcorgcr-lbl-couponcode$ttid').innerHTML,
-                afterCopy:function(){
-                ";
-
-                $clip_script .= "
-                alert('Coupon has been copied to your clipboard')
-                }                                 
-                });
-                });";
-
+                afterCopy:function(){";
+                
+                $clip_script .= "alert('Coupon has been copied to your clipboard')}});});";
                 $clip_script .= '</script>';                   
             }
         }
@@ -672,59 +662,28 @@
         $expiry_id='id="jcorgcr-lbl-expiry'.$ttid.'"';
         $url = plugin_dir_url(__FILE__);
         $nonce = wp_create_nonce('jcorgcr_nonce_catch');
-        $fullyloadedhtml = '
-        <div '.$container_id.' class="jcorgcoupon-container-outer">
-        <div style="width:'.$width.'px;height:'.$height.'px;" 
-        class="jcorgcr-all-options-container jcorgcoupon-container-outer-aop  jcorg-'.$theme.'-coupon-theme-background jcorg-grey-coupon-theme-background-detect " 
-        '.$preview_id.'>
+        $fullyloadedhtml = '<div '.$container_id.' class="jcorgcoupon-container-outer">
+        <div style="width:'.$width.'px;height:'.$height.'px;" class="jcorgcr-all-options-container jcorgcoupon-container-outer-aop  jcorg-'.$theme.'-coupon-theme-background jcorg-grey-coupon-theme-background-detect " '.$preview_id.'>
         <div class="jcorgcr-all-options-sub-container">
-        <div class="jcorgcr-all-options-left-container jcorgcr-all-options-left-top-container  jcorg-'.$theme.'-coupon-theme-background jcorg-grey-coupon-theme-background-detect " 
-        '.$wrapper_id.' '.$hide_wrapper.'>
+        <div class="jcorgcr-all-options-left-container jcorgcr-all-options-left-top-container  jcorg-'.$theme.'-coupon-theme-background jcorg-grey-coupon-theme-background-detect " '.$wrapper_id.' '.$hide_wrapper.'>
         <div class="jcorgcr-all-options-top-layer"><a '.$wrapper_a_id.' class="jcorgcr-all-options-top-layer-a" style="text-decoration:none">'.$wrapper_title.'</a></div>
-
         </div>
         <div class="jcorgcr-all-options-left-container" '.$coupon_border_override.'>
-        <div class="jcorgcr-all-options-does-it-work">
-
-        <div style="margin:5px">Does this code worked for you?</div>
-        <div>
-        <a href="javascript:void(0)" class="jcorgcr-coupon-yes" onClick="JcorgWp.feedback(\'chalpiya\',\''.$id.'\',\''.$nonce.'\',\''.$url.'\')">Yes</a>
-        <a href="javascript:void(0)" class="jcorgcr-coupon-no" onClick="JcorgWp.feedback(\'nahichaliya\',\''.$id.'\',\''.$nonce.'\',\''.$url.'\')">No</a>
+        <div class="jcorgcr-all-options-does-it-work" style="text-align:center">
+        <div style="text-align:center;margin:5px">Did this code work for you?</div>
+        <div style="margin-bottom:5px;text-align:center"><a href="javascript:void(0)" class="jcorgcr-coupon-yes" style="width:50px" onClick="JcorgWp.feedback(\'chalpiya\',\''.$id.'\',\''.$nonce.'\',\''.$url.'\')">Yes</a><a href="javascript:void(0)" class="jcorgcr-coupon-no" style="width:50px" onClick="JcorgWp.feedback(\'nahichaliya\',\''.$id.'\',\''.$nonce.'\',\''.$url.'\')">No</a></div></div>
+        <div style="clear:both;margin-top:5px" '.$couponcoderep.' class="jcorgcr-all-options-coupon-container">'.$couponcode.'</div>
+        <div style="width:100%;height:40%; " id="jcorgcr-scissors-'.$ttid.'"><a href="javascript:void(0)" class="jcorgcr-all-options-scissors">&nbsp;</a></div>
         </div>
-        </div>
-        <div '.$couponcoderep.' class="jcorgcr-all-options-coupon-container">'.$couponcode.'</div>
-        <div style="width:100%;height:40%; " id="jcorgcr-scissors-'.$ttid.'">
-        <a href="javascript:void(0)" class="jcorgcr-all-options-scissors">
-        &nbsp;
-        </a>
-        </div>
-        </div>
-
         <div class="jcorgcr-all-options-right-container">
-        <!-- title-->
-        <div class="jcorgcr-all-options-title  jcorg-'.$theme.'-coupon-theme-background jcorg-grey-coupon-theme-background-detect "  '.$titleid.'>
-        '.$title.'
-        </div>
-        <div class="jcorgcr-all-options-description"  '.$descriptionid.'>
-        '.$description.'
-        </div>
+        <div class="jcorgcr-all-options-title  jcorg-'.$theme.'-coupon-theme-background jcorg-grey-coupon-theme-background-detect "  '.$titleid.'>'.$title.'</div>
+        <div class="jcorgcr-all-options-description"  '.$descriptionid.'>'.$description.'</div>
         <div class="jcorgcr-all-options-save-expiry-container">
         <div class="jcorgcr-all-options-save-background-'.$save_background.'  jcorgcr-all-options-save">
-        <div class="jcorgcr-all-options-save-inner " '.$savings_id.'>
-        '.$save.'
-        </div>
-        </div>
-
+        <div class="jcorgcr-all-options-save-inner " '.$savings_id.'>'.$save.'</div></div>
         <div class="jcorgcr-all-options-expiry">
         <div class="jcorgcr-all-options-expiry-inner" '.$expiry_id.'>'.$expiry.'</div>
-        </div>
-        '.$clip_script.'
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        ';
+        </div>'.$clip_script.'</div></div></div></div></div>';
         return $fullyloadedhtml;
     }
 
