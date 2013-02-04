@@ -3,7 +3,7 @@
     Plugin Name: JaspreetChahal's Coupons Lite
     Plugin URI: http://jaspreetchahal.org/wordpress-jc-coupon-plugin-lite
     Description: JC Coupon Lite plugin provides easy to use coupon management to be included in your posts and pages or even in side bars. There are heaps of options to create a coupon with multiple coupon themes. 
-    Version: 2.0
+    Version: 2.1
     Author: Jaspreet Chahal
     Author URI: http://jaspreetchahal.org
     */
@@ -183,11 +183,11 @@
         add_settings_field('jcorgcr_default_height', 'Default Height', 'jcorgcr_default_height', __FILE__, 'main_settings_section');
         */
 
-        wp_enqueue_script('jcorgcr_jqueryui',"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js");
-        wp_enqueue_script('jcorgcr_admin_script',plugins_url("/jaspreetchahals-coupons-lite/js/jcorgcr_admin.min.js"));
-        wp_enqueue_script('jcorgcr_admin_hc',plugins_url("/jaspreetchahals-coupons-lite/js/jquery.hc.min.js",dirname(__FILE__)));
+        wp_enqueue_script( 'jquery');
+        wp_enqueue_script('jcorgcr_admin_script',plugins_url("/jaspreetchahals-coupons-lite/js/jcorgcr_admin.min.js"), array('jquery', 'jquery-ui-core', 'jquery-effects-core', 'jquery-ui-dialog','jquery-ui-datepicker','jquery-ui-slider'),'3.0');
+        wp_enqueue_script('jcorgcr_admin_hc',plugins_url("/jaspreetchahals-coupons-lite/js/jquery.hc.min.js"), array('jquery', 'jquery-ui-core', 'jquery-effects-core', 'jquery-ui-dialog','jquery-ui-datepicker','jquery-ui-slider'),'3.0');
         wp_enqueue_style('jcorgcr_admin_css',plugins_url("/jaspreetchahals-coupons-lite/css/jcorgcr.min.css",dirname(__FILE__)));
-        wp_enqueue_style('jcorgcr_jqueryui',plugins_url("/jaspreetchahals-coupons-lite/css/ui-lightness/jquery-ui-1.8.20.custom.css",dirname(__FILE__)));
+
         wp_enqueue_script('thickbox');
         wp_enqueue_script('media-upload');
         wp_enqueue_style('thickbox');
@@ -650,6 +650,7 @@
                 $clip_script .= '</script>';                   
             }
         }
+        wp_enqueue_style('jcorgcr_jqueryui',plugins_url("/jaspreetchahals-coupons-lite/css/ui-lightness/jquery-ui-1.9.2.custom.css",dirname(__FILE__)));
         if(isset($_GET["mod"])) $ttid = "";
         $container_id='id="jcorgcr-all-options-container'.$ttid.'"';
         $preview_id='id="jcorgcoupon-preview'.$ttid.'"';

@@ -6,7 +6,7 @@ Requires at least: 3.3.0
 Tested up to: 3.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.0
+Stable tag: 2.1
 
 == Description ==
 
@@ -57,3 +57,6 @@ Initial Release
 
 = 2.0 =
 - compatibility with PremiumPress themes, PageLines and others
+
+= 2.1 =
+- Fixed an issue where editor link buttons get disabled
