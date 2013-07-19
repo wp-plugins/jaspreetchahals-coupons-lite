@@ -3,14 +3,14 @@
     Plugin Name: JaspreetChahal's Coupons Lite
     Plugin URI: http://jaspreetchahal.org/wordpress-jc-coupon-plugin-lite
     Description: JC Coupon Lite plugin provides easy to use coupon management to be included in your posts and pages or even in side bars. There are heaps of options to create a coupon with multiple coupon themes. 
-    Version: 2.1
+    Version: 2.2
     Author: Jaspreet Chahal
     Author URI: http://jaspreetchahal.org
     */
     global $jcorgcr_plugin_version;
     $jcorgcr_plugin_version = "2.0";
     global $jcorgcr_db_version;
-    $jcorgcr_db_version = "1.7";
+    $jcorgcr_db_version = $jcorgcr_plugin_version;
     global $jcorgcrZCSWF;
     $jcorgcrZCSWF = plugin_dir_url(__FILE__);
     register_activation_hook(__FILE__,'jcorgcr_couponactivate');
@@ -464,7 +464,7 @@
 
                     <div  style="margin: 10px;">
                         <label style="font-weight: bold;">Coupon Code/Promotional Code *</label>
-                        <input type="text" name="coupon" style="width:80%;" maxlength="12" value="<?php if(is_object($coupon)) echo stripslashes($coupon->coupon)?>" onkeyup="JcorgUtil.updateAllOptions('couponcode',this.value)" onblur="jQuery('#jcorgcr-lbl-couponcode-top').hide().fadeIn();jQuery('#jcorgcr-short-coupon-top').hide().fadeIn();" onfocus="jQuery('#jcorgcr-lbl-couponcode-top').show().fadeOut();jQuery('#jcorgcr-short-coupon-top').show().fadeOut();">
+                        <input type="text" name="coupon" style="width:80%;" maxlength="14" value="<?php if(is_object($coupon)) echo stripslashes($coupon->coupon)?>" onkeyup="JcorgUtil.updateAllOptions('couponcode',this.value)" onblur="jQuery('#jcorgcr-lbl-couponcode-top').hide().fadeIn();jQuery('#jcorgcr-short-coupon-top').hide().fadeIn();" onfocus="jQuery('#jcorgcr-lbl-couponcode-top').show().fadeOut();jQuery('#jcorgcr-short-coupon-top').show().fadeOut();">
                     </div>
                     <div  style="margin: 10px;">
                         <label style="font-weight: bold;">Name - your reference (internal use) *</label>
