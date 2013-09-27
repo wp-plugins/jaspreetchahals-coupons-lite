@@ -82,7 +82,7 @@
                             <td>".stripcslashes($coupon->coupon)."</td>
                             <td>".stripcslashes($coupon->title)."</td>
                             <td>".stripcslashes($coupon->savings)."</td>
-                            <td>".stripcslashes($coupon->expiry)."</td>
+                            <td>".(($coupon->expiry_type=="Date")?date("m/d/Y",$coupon->expiry):$coupon->expiry)."</td>
                             <td>".stripcslashes($coupon->coupon_type)."</td>
                             <td>".stripcslashes($coupon->shortcode)."</td>
                             <td><span id='jcorgcr-coupon-yn-$coupon->id'>Yes's: ".stripcslashes($coupon->yeses)."<br>No's: ".stripcslashes($coupon->nos)."</span></td>

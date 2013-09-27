@@ -3,10 +3,10 @@ Contributors: Jaspreet Chahal
 Donate link:http://jaspreetchahal.org/wordpress-jc-coupon-plugin-lite/
 Tags: JC Coupon, coupon, coupons, affiliate, links, import coupons, promotional codes, Wordpress coupon plugin, wordpress coupons plugin
 Requires at least: 3.3.0
-Tested up to: 3.5.2
+Tested up to: 3.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 2.2
+Stable tag: 2.5
 
 == Description ==
 
@@ -64,3 +64,6 @@ Initial Release
 
 = 2.2 =
 - Coupon container can now hold coupons upto 14 characters in length.
+
+= 2.5 =
+- Fixed data format in coupon list, fixed copy to clipboard functionality that didn't work on some custom themes.
