@@ -8,7 +8,7 @@
     Author URI: http://jaspreetchahal.org
     */
     global $jcorgcr_plugin_version;
-    $jcorgcr_plugin_version = "2.0";
+    $jcorgcr_plugin_version = "2.5";
     global $jcorgcr_db_version;
     $jcorgcr_db_version = $jcorgcr_plugin_version;
     global $jcorgcrZCSWF;
