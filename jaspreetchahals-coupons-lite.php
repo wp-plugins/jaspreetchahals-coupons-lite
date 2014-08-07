@@ -3,12 +3,12 @@
     Plugin Name: JaspreetChahal's Coupons Lite
     Plugin URI: http://jaspreetchahal.org/wordpress-jc-coupon-plugin-lite
     Description: JC Coupon Lite plugin provides easy to use coupon management to be included in your posts and pages or even in side bars. There are heaps of options to create a coupon with multiple coupon themes. 
-    Version: 2.6
+    Version: 2.7
     Author: Jaspreet Chahal
     Author URI: http://jaspreetchahal.org
     */
     global $jcorgcr_plugin_version;
-    $jcorgcr_plugin_version = "2.6";
+    $jcorgcr_plugin_version = "2.7";
     global $jcorgcr_db_version;
     $jcorgcr_db_version = $jcorgcr_plugin_version;
     global $jcorgcrZCSWF;
