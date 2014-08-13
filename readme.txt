@@ -72,4 +72,4 @@ Initial Release
 Updated Zeroclipboard 
 
 = 2.7 = 
-Checked compatibility with wordpress version 3.9.x
+Checked compatibility with wordpress version 3.9.2+
