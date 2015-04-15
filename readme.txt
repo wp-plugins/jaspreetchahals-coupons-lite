@@ -3,10 +3,10 @@ Contributors: jaschahal
 Donate link:http://jaspreetchahal.org/wordpress-jc-coupon-plugin-lite/
 Tags: JC Coupon, coupon, coupons, affiliate, links, import coupons, promotional codes, Wordpress coupon plugin, wordpress coupons plugin
 Requires at least: 3.3.0
-Tested up to: 4.1.0
+Tested up to: 4.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 3.0
+Stable tag: 3.1
 
 == Description ==
 
@@ -80,3 +80,8 @@ Checked compatibility with wordpress version 3.9.x
 
 = 3.0 =
 - Checked compatibility with wordpress version 4.1
+
+= 3.1 =
+- Fixed clipboard issue
+- Fixed padding issue with title
+- Compatibility check with WP 4.1+

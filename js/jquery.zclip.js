@@ -1,14 +1,12 @@
 /*
- * zClip :: jQuery ZeroClipboard v1.1.1
- * http://steamdev.com/zclip
+ * zClip :: jQuery ZeroClipboard v1.1.5
+ * Originally forked from: http://steamdev.com/zclip
  *
  * Copyright 2011, SteamDev
- * Released under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
  *
- * Date: Wed Jun 01, 2011
+ * Released under the MIT license.
+ * https://github.com/patricklodder/jquery-zclip/blob/master/LICENSE
  */
-
 
 (function (jQuery) {
 
@@ -16,18 +14,7 @@
 
         if (typeof params == "object" && !params.length) {
 
-            var settings = jQuery.extend({
-
-                path: 'ZeroClipboard.swf',
-                copy: null,
-                beforeCopy: null,
-                afterCopy: null,
-                clickAfter: true,
-                setHandCursor: true,
-                setCSSEffects: true
-
-            }, params);
-			
+            var settings = jQuery.extend({}, ZeroClipboard.defaults, params);
 
             return this.each(function () {
 
@@ -37,37 +24,43 @@
 
                     ZeroClipboard.setMoviePath(settings.path);
                     var clip = new ZeroClipboard.Client();
-                    
-                    if(jQuery.isFunction(settings.copy)){
-                    	o.bind('zClip_copy',settings.copy);
+
+                    if (jQuery.isFunction(settings.copy)) {
+                        o.bind('zClip_copy', settings.copy);
                     }
-                    if(jQuery.isFunction(settings.beforeCopy)){
-                    	o.bind('zClip_beforeCopy',settings.beforeCopy);
+
+                    if (jQuery.isFunction(settings.beforeCopy)) {
+                        o.bind('zClip_beforeCopy', settings.beforeCopy);
                     }
-                    if(jQuery.isFunction(settings.afterCopy)){
-                    	o.bind('zClip_afterCopy',settings.afterCopy);
-                    }                    
+
+                    if (jQuery.isFunction(settings.afterCopy)) {
+                        o.bind('zClip_afterCopy', settings.afterCopy);
+                    }
 
                     clip.setHandCursor(settings.setHandCursor);
+
                     clip.setCSSEffects(settings.setCSSEffects);
+
                     clip.addEventListener('mouseOver', function (client) {
                         o.trigger('mouseenter');
                     });
+
                     clip.addEventListener('mouseOut', function (client) {
                         o.trigger('mouseleave');
                     });
+
                     clip.addEventListener('mouseDown', function (client) {
 
                         o.trigger('mousedown');
-                        
-			if(!jQuery.isFunction(settings.copy)){
-			   clip.setText(settings.copy);
-			} else {
-			   clip.setText(o.triggerHandler('zClip_copy'));
-			}                        
-                        
+
                         if (jQuery.isFunction(settings.beforeCopy)) {
-                            o.trigger('zClip_beforeCopy');                            
+                            o.trigger('zClip_beforeCopy');
+                        }
+
+                        if (!jQuery.isFunction(settings.copy)) {
+                            clip.setText(settings.copy);
+                        } else {
+                            clip.setText(o.triggerHandler('zClip_copy'));
                         }
 
                     });
@@ -75,15 +68,15 @@
                     clip.addEventListener('complete', function (client, text) {
 
                         if (jQuery.isFunction(settings.afterCopy)) {
-                            
+
                             o.trigger('zClip_afterCopy');
 
                         } else {
                             if (text.length > 500) {
                                 text = text.substr(0, 500) + "...\n\n(" + (text.length - 500) + " characters not shown)";
                             }
-							
-			    o.removeClass('hover');
+
+                            o.removeClass('hover');
                             alert("Copied text to clipboard:\n\n " + text);
                         }
 
@@ -93,11 +86,9 @@
 
                     });
 
-					
                     clip.glue(o[0], o.parent()[0]);
-					
-		    jQuery(window).bind('load resize',function(){clip.reposition();});
-					
+
+                    jQuery(window).bind('load resize', function () {clip.reposition();});
 
                 }
 
@@ -112,11 +103,16 @@
                 params = params.toLowerCase();
                 var zclipId = o.data('zclipId');
                 var clipElm = jQuery('#' + zclipId + '.zclip');
+                var clientId = clipElm.attr('id').replace(/^.*_/g, '') || null;
 
                 if (params == "remove") {
 
                     clipElm.remove();
                     o.removeClass('active hover');
+                    o.unbind('zClip_copy');
+                    o.unbind('zClip_beforeCopy');
+                    o.unbind('zClip_afterCopy');
+                    ZeroClipboard.unregister(clientId);
 
                 } else if (params == "hide") {
 
@@ -133,17 +129,9 @@
 
         }
 
-    }	
-	
-	
+    };
 
 })(jQuery);
-
-
-
-
-
-
 
 // ZeroClipboard
 // Simple Set Clipboard System
@@ -157,6 +145,20 @@ var ZeroClipboard = {
     // URL to movie
     nextId: 1,
     // ID of next movie
+
+    defaults: {
+        path: 'ZeroClipboard.swf',
+        clickAfter: true,
+        setHandCursor: true,
+        setCSSEffects: true,
+
+        copy: null,
+        // a string or function that returns string
+
+        beforeCopy: null,
+        afterCopy: null
+    },
+
     jQuery: function (thingy) {
         // simple DOM lookup utility function
         if (typeof(thingy) == 'string') thingy = document.getElementById(thingy);
@@ -200,7 +202,7 @@ var ZeroClipboard = {
     },
 
     dispatch: function (id, eventName, args) {
-        // receive event from flash movie, send to client		
+        // receive event from flash movie, send to client
         var client = this.clients[id];
         if (client) {
             client.receiveEvent(eventName, args);
@@ -210,6 +212,12 @@ var ZeroClipboard = {
     register: function (id, client) {
         // register new client to receive events
         this.clients[id] = client;
+    },
+
+    unregister: function (id) {
+        if (typeof(id) === 'number' && this.clients.hasOwnProperty(id)) {
+            delete this.clients[id];
+        }
     },
 
     getDOMObjectPosition: function (obj, stopObj) {
@@ -222,7 +230,7 @@ var ZeroClipboard = {
         };
 
         if (obj && (obj != stopObj)) {
-			info.left += obj.offsetLeft;
+            info.left += obj.offsetLeft;
             info.top += obj.offsetTop;
         }
 
@@ -295,7 +303,7 @@ ZeroClipboard.Client.prototype = {
         style.zIndex = zIndex;
 
         if (typeof(stylesToAdd) == 'object') {
-            for (addedStyle in stylesToAdd) {
+            for (var addedStyle in stylesToAdd) {
                 style[addedStyle] = stylesToAdd[addedStyle];
             }
         }
@@ -343,7 +351,8 @@ ZeroClipboard.Client.prototype = {
             var body = document.getElementsByTagName('body')[0];
             try {
                 body.removeChild(this.div);
-            } catch (e) {;
+            } catch (e) {
+                //do nothing
             }
 
             this.domElement = null;
@@ -408,8 +417,9 @@ ZeroClipboard.Client.prototype = {
             // movie claims it is ready, but in IE this isn't always the case...
             // bug fix: Cannot extend EMBED DOM elements in Firefox, must use traditional function
             this.movie = document.getElementById(this.movieId);
+            var self = this;
+
             if (!this.movie) {
-                var self = this;
                 setTimeout(function () {
                     self.receiveEvent('load', null);
                 }, 1);
@@ -418,7 +428,6 @@ ZeroClipboard.Client.prototype = {
 
             // firefox on pc needs a "kick" in order to set these in certain cases
             if (!this.ready && navigator.userAgent.match(/Firefox/) && navigator.userAgent.match(/Windows/)) {
-                var self = this;
                 setTimeout(function () {
                     self.receiveEvent('load', null);
                 }, 100);
@@ -442,10 +451,7 @@ ZeroClipboard.Client.prototype = {
                     this.domElement.addClass('active');
                 }
 
-
             }
-
-
             break;
 
         case 'mouseout':
@@ -477,7 +483,7 @@ ZeroClipboard.Client.prototype = {
             for (var idx = 0, len = this.handlers[eventName].length; idx < len; idx++) {
                 var func = this.handlers[eventName][idx];
 
-                if (typeof(func) == 'function') {
+                if (jQuery.isFunction(func)) {
                     // actual function reference
                     func(this, args);
                 } else if ((typeof(func) == 'object') && (func.length == 2)) {
@@ -491,5 +497,4 @@ ZeroClipboard.Client.prototype = {
         } // user defined handler for event
     }
 
-};	
-
+};
